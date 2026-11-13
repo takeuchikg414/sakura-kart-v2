@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" role="img" aria-label="SAKURA KART">
+  <!-- マスコット：アニメ調のカート（仮イラスト）。アニメーションはSVG内に記述 -->
+  <style>
+    .wheel { transform-box: fill-box; transform-origin: center; animation: spin .45s linear infinite; }
+    .body  { animation: bob .5s ease-in-out infinite alternate; }
+    .scarf { transform-box: fill-box; transform-origin: 100% 30%; animation: flap .35s ease-in-out infinite alternate; }
+    .speed line { animation: dash .6s linear infinite; }
+    .speed line:nth-child(2) { animation-delay: -.2s; }
+    .speed line:nth-child(3) { animation-delay: -.4s; }
+    .puff { transform-box: fill-box; transform-origin: center; animation: puff 1s ease-out infinite; }
+    .puff:nth-of-type(2) { animation-delay: -.5s; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes bob { from { transform: translateY(0); } to { transform: translateY(-3px); } }
+    @keyframes flap { from { transform: rotate(-4deg) scaleY(.92); } to { transform: rotate(5deg) scaleY(1.06); } }
+    @keyframes dash { from { transform: translateX(30px); opacity: 0; } 40% { opacity: 1; } to { transform: translateX(-40px); opacity: 0; } }
+    @keyframes puff { from { transform: scale(.4) translateX(0); opacity: .9; } to { transform: scale(1.4) translateX(-30px); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <ellipse cx="215" cy="248" rx="175" ry="9" fill="#1C1022" opacity=".18"/>
+
+  <!-- 集中線ふうのスピード線 -->
+  <g class="speed" stroke="#1C1022" stroke-width="5" stroke-linecap="round">
+    <line x1="8" y1="120" x2="58" y2="120"/>
+    <line x1="0" y1="150" x2="40" y2="150"/>
+    <line x1="14" y1="178" x2="52" y2="178"/>
+  </g>
+
+  <!-- 排気のけむり -->
+  <circle class="puff" cx="38" cy="204" r="12" fill="#FFF4E6" stroke="#1C1022" stroke-width="3"/>
+  <circle class="puff" cx="26" cy="194" r="9" fill="#FFF4E6" stroke="#1C1022" stroke-width="3"/>
+
+  <g class="body">
+    <!-- マフラー（アニメの“なびくスカーフ”） -->
+    <path class="scarf" d="M184 100 C156 92 128 104 96 88 C112 106 134 114 152 112 C136 122 116 124 98 120 C126 136 162 126 188 110 Z"
+          fill="#E5402A" stroke="#1C1022" stroke-width="4" stroke-linejoin="round"/>
+
+    <!-- シート -->
+    <path d="M150 156 L138 100 C137 88 158 85 164 96 L182 154 Z" fill="#E5402A" stroke="#1C1022" stroke-width="4" stroke-linejoin="round"/>
+
+    <!-- ドライバー（胴体） -->
+    <path d="M166 156 C158 124 168 98 196 95 C218 93 232 114 230 156 Z" fill="#45B8F0" stroke="#1C1022" stroke-width="4" stroke-linejoin="round"/>
+    <!-- 腕 -->
+    <path d="M212 112 L262 124" stroke="#1C1022" stroke-width="20" stroke-linecap="round"/>
+    <path d="M212 112 L262 124" stroke="#45B8F0" stroke-width="12" stroke-linecap="round"/>
+    <!-- ハンドル -->
+    <path d="M276 128 L292 156" stroke="#1C1022" stroke-width="6" stroke-linecap="round"/>
+    <ellipse cx="272" cy="124" rx="7" ry="19" fill="none" stroke="#1C1022" stroke-width="6"/>
+    <circle cx="266" cy="125" r="9" fill="#FFF4E6" stroke="#1C1022" stroke-width="3"/>
+
+    <!-- ヘルメット -->
+    <circle cx="198" cy="66" r="37" fill="#FFF4E6" stroke="#1C1022" stroke-width="4"/>
+    <path d="M166 50 C180 30 214 28 230 48 L222 54 C208 40 186 40 174 56 Z" fill="#FF5DA2" stroke="#1C1022" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M204 52 C224 50 238 62 234 80 C222 88 206 84 200 74 Z" fill="#1C1022"/>
+    <path d="M214 58 C222 58 228 62 229 68" stroke="#FFF4E6" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- 桜のヘルメットマーク -->
+    <g transform="translate(180 76) scale(.32)" fill="#FF5DA2" stroke="#1C1022" stroke-width="5">
+      <path d="M0 0 C-14 -10 -17 -32 -7 -42 L0 -35 L7 -42 C17 -32 14 -10 0 0 Z"/>
+      <path d="M0 0 C-14 -10 -17 -32 -7 -42 L0 -35 L7 -42 C17 -32 14 -10 0 0 Z" transform="rotate(72)"/>
+      <path d="M0 0 C-14 -10 -17 -32 -7 -42 L0 -35 L7 -42 C17 -32 14 -10 0 0 Z" transform="rotate(144)"/>
+      <path d="M0 0 C-14 -10 -17 -32 -7 -42 L0 -35 L7 -42 C17 -32 14 -10 0 0 Z" transform="rotate(216)"/>
+      <path d="M0 0 C-14 -10 -17 -32 -7 -42 L0 -35 L7 -42 C17 -32 14 -10 0 0 Z" transform="rotate(288)"/>
+    </g>
+
+    <!-- 車体 -->
+    <path d="M40 192 C30 166 52 150 82 152 L172 154 C188 124 218 116 252 132 L332 152 C372 160 398 172 394 190 C392 202 378 206 362 206 L62 208 C50 208 43 202 40 192 Z"
+          fill="#FF5DA2" stroke="#1C1022" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M118 176 L308 172 L296 190 L108 193 Z" fill="#FFCB2E" stroke="#1C1022" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- ハイライト（セル画の光） -->
+    <path d="M70 162 C90 158 140 160 168 161" stroke="#FFF4E6" stroke-width="5" stroke-linecap="round" fill="none" opacity=".85"/>
+    <path d="M262 142 L320 158" stroke="#FFF4E6" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+    <!-- ゼッケン -->
+    <circle cx="214" cy="182" r="18" fill="#FFF4E6" stroke="#1C1022" stroke-width="3.5"/>
+    <text x="214" y="189" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="19" fill="#1C1022">39</text>
+    <!-- ヘッドライト -->
+    <circle cx="380" cy="180" r="7" fill="#FFCB2E" stroke="#1C1022" stroke-width="3"/>
+  </g>
+
+  <!-- タイヤ -->
+  <g class="wheel">
+    <circle cx="105" cy="204" r="44" fill="#1C1022"/>
+    <circle cx="105" cy="204" r="22" fill="#FFF4E6" stroke="#1C1022" stroke-width="3"/>
+    <path d="M105 184 L105 224 M85 204 L125 204" stroke="#1C1022" stroke-width="4"/>
+    <circle cx="105" cy="204" r="6" fill="#FF5DA2" stroke="#1C1022" stroke-width="2"/>
+  </g>
+  <g class="wheel">
+    <circle cx="330" cy="212" r="34" fill="#1C1022"/>
+    <circle cx="330" cy="212" r="17" fill="#FFF4E6" stroke="#1C1022" stroke-width="3"/>
+    <path d="M330 197 L330 227 M315 212 L345 212" stroke="#1C1022" stroke-width="4"/>
+    <circle cx="330" cy="212" r="5" fill="#FF5DA2" stroke="#1C1022" stroke-width="2"/>
+  </g>
+</svg>
