@@ -248,7 +248,8 @@ html[lang="ja"] .badge { font-family: var(--ff-jp-display); font-size: clamp(12p
 .loader__lights i:nth-child(1) { animation: lightRed 1.5s steps(1) forwards; }
 .loader__lights i:nth-child(2) { animation: lightYellow 1.5s steps(1) forwards; }
 .loader__lights i:nth-child(3) { animation: lightGreen 1.5s steps(1) forwards; }
-.loader__kart { position: relative; width: min(380px, 70vw); animation: driveIn 1s var(--bounce) both; }
+.loader__logo { position: relative; width: min(300px, 62vw); border-radius: 50%; border: 4px solid var(--cream); box-shadow: 0 0 0 4px var(--ink), 0 0 60px rgba(255,93,162,.6); animation: logoIn 1s var(--bounce) both; }
+@keyframes logoIn { from { transform: scale(0) rotate(-200deg); } to { transform: none; } }
 .loader__word {
   position: relative; margin: 0;
   font-family: var(--ff-jp-display);
@@ -278,7 +279,8 @@ html[lang="ja"] .badge { font-family: var(--ff-jp-display); font-size: clamp(12p
 @media (min-width: 768px) { .hdr { padding: 18px 32px; } }
 .hdr.is-stuck { background: var(--cream); box-shadow: 0 3px 0 var(--ink); padding-top: 10px; padding-bottom: 10px; }
 .hdr__logo { display: flex; align-items: center; gap: 8px; text-decoration: none; font-family: var(--ff-display); font-size: clamp(18px, 2.4vw, 28px); color: var(--matcha); white-space: nowrap; }
-.hdr__mark { width: 34px; height: 34px; color: var(--cream); filter: drop-shadow(2px 2px 0 var(--ink)); animation: spinSlow 12s linear infinite; }
+.hdr__mark { width: 46px; height: 46px; border-radius: 50%; border: 2.5px solid var(--ink); background: #fff; box-shadow: 0 3px 0 var(--ink); transition: transform .3s var(--bounce); }
+.hdr__logo:hover .hdr__mark { transform: rotate(-12deg) scale(1.08); }
 .hdr__nav { display: flex; gap: 10px; }
 .hdr__right { display: flex; align-items: center; gap: 10px; }
 .lang { display: flex; border: 2.5px solid var(--ink); border-radius: var(--pill); overflow: hidden; background: var(--cream); box-shadow: 0 3px 0 var(--ink); }
@@ -342,10 +344,22 @@ html[lang="ja"] .badge { font-family: var(--ff-jp-display); font-size: clamp(12p
 .hero__stage {
   position: relative;
   width: min(640px, 92vw);
-  margin: clamp(60px, 12vw, 170px) auto 0;
+  margin: clamp(30px, 5vw, 80px) auto 0;
   flex: 1;
 }
-.hero__kart { width: 100%; height: auto; cursor: pointer; filter: drop-shadow(0 10px 0 rgba(28,16,34,.25)); animation: cruise 6s ease-in-out infinite; }
+.hero__logo {
+  display: block;
+  width: min(440px, 74vw); height: auto;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 4px solid var(--ink);
+  background: #fff;
+  box-shadow: var(--pop-lg);
+  cursor: pointer;
+  animation: logoFloat 5s ease-in-out infinite;
+}
+@keyframes logoFloat { 0%, 100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(3deg) translateY(-10px); } }
+.hero__kart { position: absolute; left: -14%; bottom: -8%; z-index: 2; width: min(260px, 40vw); height: auto; pointer-events: none; filter: drop-shadow(0 8px 0 rgba(28,16,34,.25)); animation: cruise 6s ease-in-out infinite; }
 .hero__tag { position: absolute; left: -2%; top: 8%; transform: rotate(-8deg); z-index: 2; }
 .hero__sfx { position: absolute; right: -2%; top: -6%; transform: rotate(10deg); animation: sfxPulse 1.4s var(--bounce) infinite; }
 .hero__badge { position: absolute; right: -4%; bottom: -10%; z-index: 2; }
@@ -394,6 +408,8 @@ html[lang="ja"] .hero__title { font-family: var(--ff-jp-display); font-weight: 4
 
 @media (max-width: 640px) {
   .hero__tate { display: none; }
+  .hero__kart { left: -4%; bottom: -6%; width: 34vw; }
+  .hero__foot { margin-top: 64px; }
   .hero__tag { top: -14%; }
   .hero__badge { bottom: -22%; right: 0; }
   .hero__addr { text-align: left; }
@@ -532,8 +548,11 @@ html[lang="ja"] .scene__title { font-family: var(--ff-jp-display); }
   .js .ride__scenes { min-height: 300px; }
   .js .ride__sticky { padding-top: 80px; }
 }
+@media (max-width: 480px) {
+  .hdr__logo span { display: none; }
+}
 @media (max-width: 380px) {
-  .hdr__mark { width: 26px; height: 26px; }
+  .hdr__mark { width: 38px; height: 38px; }
   .hdr__right { gap: 6px; }
 }
 
@@ -864,7 +883,8 @@ html[lang="ja"] .plan h3 { font-family: var(--ff-jp-display); font-size: 24px; }
   background: linear-gradient(-45deg, transparent 8px, var(--cream) 8px) 0 0 / 16px 14px, linear-gradient(45deg, transparent 8px, var(--cream) 8px) 0 0 / 16px 14px;
 }
 .ticket__head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
-.ticket__brand { font-family: var(--ff-display); font-size: 30px; color: var(--matcha); }
+.ticket__brand { display: flex; align-items: center; gap: 10px; font-family: var(--ff-display); font-size: 30px; color: var(--matcha); }
+.ticket__logo { width: 48px; height: 48px; border-radius: 50%; border: 2.5px solid var(--ink); }
 .ticket__no { font-size: 11px; font-weight: 800; letter-spacing: .1em; }
 .ticket__addr { font-weight: 800; letter-spacing: .06em; font-size: 12px; margin: 4px 0 16px; padding-bottom: 14px; border-bottom: 2px dashed var(--ink); }
 .ticket__rows { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 8px; }

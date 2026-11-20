@@ -7,7 +7,10 @@
   <meta name="description" content="Be the hero of your own anime. Guided street go-kart tours through Shibuya, Tokyo Tower and the Rainbow Bridge for international visitors. Book online in minutes.">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#FF5DA2">
-  <link rel="icon" href="images/logo-mark.svg" type="image/svg+xml">
+  <meta property="og:title" content="SAKURA KART | Drive a Go-Kart Through Tokyo">
+  <meta property="og:image" content="images/logo.jpg">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@500;800&family=Shrikhand&display=swap" rel="stylesheet">
@@ -44,14 +47,14 @@
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader__burst"></div>
   <div class="loader__lights"><i></i><i></i><i></i></div>
-  <img class="loader__kart" src="images/kart.svg" alt="">
+  <img class="loader__logo" src="images/logo.jpg" alt="" width="720" height="720">
   <p class="loader__word"><span class="en">Ready… GO!</span><span class="ja">よーい、ドン！</span></p>
 </div>
 
 <!-- ============ ヘッダー ============ -->
 <header class="hdr" id="hdr">
   <a href="#top" class="hdr__logo" aria-label="SAKURA KART">
-    <svg class="hdr__mark" aria-hidden="true"><use href="#i-flower"/></svg>
+    <img class="hdr__mark" src="images/logo-sm.jpg" alt="" width="44" height="44">
     <span>Sakura Kart</span>
   </a>
   <nav class="hdr__nav" id="global-nav" aria-label="Main">
@@ -84,7 +87,8 @@
 
   <div class="hero__stage">
     <span class="tag tag--yellow hero__tag" data-ja="本物の東京の公道を走る">Real streets of Tokyo</span>
-    <img class="hero__kart" id="hero-kart" src="images/kart.svg" alt="" width="420" height="260">
+    <img class="hero__logo" id="hero-kart" src="images/logo.jpg" alt="SAKURA KART" width="720" height="720">
+    <img class="hero__kart" src="images/kart.svg" alt="" width="420" height="260">
     <span class="sfx hero__sfx" aria-hidden="true">ブォン!!</span>
     <a href="#booking" class="badge hero__badge">
       <span class="en">Open daily<br>9am–9pm</span><span class="ja">毎日営業<br>9:00–21:00</span>
@@ -739,7 +743,7 @@
     <img class="ftr__kart" src="images/kart.svg" alt="">
     <div class="ticket">
       <div class="ticket__head">
-        <span class="ticket__brand">Sakura Kart</span>
+        <span class="ticket__brand"><img class="ticket__logo" src="images/logo-sm.jpg" alt="" width="48" height="48">Sakura Kart</span>
         <span class="ticket__no">TICKET Nº 0039</span>
       </div>
       <p class="ticket__addr" data-ja="（住所未定）東京都">(ADDRESS TBD) TOKYO, JAPAN</p>
