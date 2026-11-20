@@ -30,9 +30,10 @@
     const floaty = $(".floaty");
     const book = $(".floaty__book");
     const booking = $("#booking");
+    const hero = $(".hero");
     const onScroll = () => {
       hdr.classList.toggle("is-stuck", scrollY > 40);
-      if (floaty) floaty.classList.toggle("is-hidden", scrollY < 300);
+      if (floaty) floaty.classList.toggle("is-hidden", scrollY < (hero ? hero.offsetHeight * .8 : 300)); // ヒーローを過ぎてから表示
       if (book && booking) {
         const r = booking.getBoundingClientRect();
         book.classList.toggle("is-off", r.top < innerHeight * .7 && r.bottom > innerHeight * .3);
@@ -106,7 +107,7 @@
     let z = 10;
     $$(".polaroid", board).forEach(card => {
       card.addEventListener("pointerdown", e => {
-        if (innerWidth <= 760) return;
+        if (innerWidth <= 1023) return; // 1024px未満はグリッド表示なのでドラッグしない
         e.preventDefault();
         card.setPointerCapture(e.pointerId);
         card.classList.add("is-drag");

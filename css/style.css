@@ -248,8 +248,7 @@ html[lang="ja"] .badge { font-family: var(--ff-jp-display); font-size: clamp(12p
 .loader__lights i:nth-child(1) { animation: lightRed 1.5s steps(1) forwards; }
 .loader__lights i:nth-child(2) { animation: lightYellow 1.5s steps(1) forwards; }
 .loader__lights i:nth-child(3) { animation: lightGreen 1.5s steps(1) forwards; }
-.loader__logo { position: relative; width: min(300px, 62vw); border-radius: 50%; border: 4px solid var(--cream); box-shadow: 0 0 0 4px var(--ink), 0 0 60px rgba(255,93,162,.6); animation: logoIn 1s var(--bounce) both; }
-@keyframes logoIn { from { transform: scale(0) rotate(-200deg); } to { transform: none; } }
+.loader__kart { position: relative; width: min(380px, 70vw); animation: driveIn 1s var(--bounce) both; }
 .loader__word {
   position: relative; margin: 0;
   font-family: var(--ff-jp-display);
@@ -341,16 +340,16 @@ html[lang="ja"] .badge { font-family: var(--ff-jp-display); font-size: clamp(12p
   -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill;
   text-shadow: 3px 3px 0 var(--ink);
 }
+/* ロゴは巨大文字の下側へ（文字に重なるのは下端の約1/4まで） */
 .hero__stage {
+  --logo: min(400px, 70vw);
   position: relative;
-  width: min(640px, 92vw);
-  margin: clamp(30px, 5vw, 80px) auto 0;
-  flex: 1;
+  width: var(--logo);
+  margin: calc(var(--fs-mega) * .7) auto 0;
 }
 .hero__logo {
   display: block;
-  width: min(440px, 74vw); height: auto;
-  margin: 0 auto;
+  width: 100%; height: auto;
   border-radius: 50%;
   border: 4px solid var(--ink);
   background: #fff;
@@ -359,19 +358,32 @@ html[lang="ja"] .badge { font-family: var(--ff-jp-display); font-size: clamp(12p
   animation: logoFloat 5s ease-in-out infinite;
 }
 @keyframes logoFloat { 0%, 100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(3deg) translateY(-10px); } }
-.hero__kart { position: absolute; left: -14%; bottom: -8%; z-index: 2; width: min(260px, 40vw); height: auto; pointer-events: none; filter: drop-shadow(0 8px 0 rgba(28,16,34,.25)); animation: cruise 6s ease-in-out infinite; }
-.hero__tag { position: absolute; left: -2%; top: 8%; transform: rotate(-8deg); z-index: 2; }
-.hero__sfx { position: absolute; right: -2%; top: -6%; transform: rotate(10deg); animation: sfxPulse 1.4s var(--bounce) infinite; }
-.hero__badge { position: absolute; right: -4%; bottom: -10%; z-index: 2; }
+/* 営業バッジ：ロゴの縁にだけ少し重ねる */
+.hero__badge { position: absolute; right: -32%; top: 42%; z-index: 2; } /* ロゴ内の文字（KART）を隠さない位置 */
+/* カート＋擬音：ロゴの右側（PC のみ） */
+.hero__ride { display: none; }
+.hero__kart { display: block; width: 100%; height: auto; filter: drop-shadow(0 8px 0 rgba(28,16,34,.25)); animation: cruise 6s ease-in-out infinite; }
+.hero__sfx { position: absolute; right: 0; bottom: -44px; font-size: clamp(30px, 3vw, 40px); transform: rotate(-6deg); animation: sfxPulse 1.4s var(--bounce) infinite; }
+@media (min-width: 1024px) {
+  .hero__ride { display: block; position: absolute; left: calc(100% + 120px); top: 12%; width: 220px; pointer-events: none; }
+}
+/* ラベル：見出しの上に置く（浮かせない） */
+.hero__tag { display: inline-block; margin-bottom: 14px; transform: rotate(-3deg); font-size: 13px; padding: 6px 14px; box-shadow: 3px 3px 0 var(--ink); }
 .hero__foot {
   position: relative; z-index: 2;
   display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px;
   width: 100%; max-width: var(--container-wide, 1280px);
-  margin: 24px auto 0;
+  margin: 48px auto 0;
   padding: 0 var(--gutter);
 }
 @media (min-width: 768px) { .hero__foot { padding: 0 32px; } }
 .hero__copy { max-width: 560px; }
+/* PC：コピーを左下に置き、1画面目に予約ボタンを入れる（ロゴとは横に離す） */
+@media (min-width: 1200px) {
+  .hero__stage { --logo: min(380px, 30vw); }
+  .hero__foot { position: absolute; left: 0; right: 0; bottom: 96px; margin: 0 auto; max-width: none; }
+  .hero__copy { max-width: 400px; }
+}
 .hero__title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; margin-bottom: 10px; letter-spacing: -.01em; }
 html[lang="ja"] .hero__title { font-family: var(--ff-jp-display); font-weight: 400; }
 .hero__lead { font-size: var(--fs-lead); }
@@ -406,12 +418,10 @@ html[lang="ja"] .hero__title { font-family: var(--ff-jp-display); font-weight: 4
 @keyframes fall { to { transform: translate(var(--dx, -80px), 110vh) rotate(540deg); } }
 @keyframes sway { from { transform: rotate(-25deg) translateX(-6px); } to { transform: rotate(25deg) translateX(6px); } }
 
+@media (max-width: 1199px) { .hero__tate { display: none; } }
 @media (max-width: 640px) {
-  .hero__tate { display: none; }
-  .hero__kart { left: -4%; bottom: -6%; width: 34vw; }
-  .hero__foot { margin-top: 64px; }
-  .hero__tag { top: -14%; }
-  .hero__badge { bottom: -22%; right: 0; }
+  .hero__badge { width: 96px; right: -8%; top: -6%; font-size: 13px; }
+  .hero__foot { margin-top: 40px; }
   .hero__addr { text-align: left; }
 }
 
@@ -443,9 +453,9 @@ html[lang="ja"] .hero__title { font-family: var(--ff-jp-display); font-weight: 4
   background: var(--bg); color: var(--fg);
   border-block: 3px solid var(--ink);
   overflow: hidden;
-  transform: rotate(-3deg);
+  transform: rotate(-2deg);
 }
-.marquee + .marquee { margin-top: -22px; transform: rotate(2deg); }
+.marquee + .marquee { margin-top: 34px; transform: rotate(1.5deg); }
 .marquee--matcha { --bg: var(--matcha); }
 .marquee--shu { --bg: var(--shu); --fg: var(--yellow); }
 .marquee--ink { --bg: var(--ink); --fg: var(--pink); }
@@ -505,9 +515,9 @@ html[lang="ja"] .reason h4 { font-family: var(--ff-jp-display); font-weight: 400
 @media (min-width: 880px) { .ride__inner { grid-template-columns: 1.1fr .9fr; gap: 60px; } }
 .ride__eyebrow { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; }
 .ride__scenes { position: relative; }
-.js .ride__scenes { min-height: clamp(280px, 40vh, 380px); }
+.js .ride__scenes { display: grid; }
 .scene { margin-bottom: 48px; }
-.js .scene { position: absolute; inset: 0 0 auto; margin: 0; opacity: 0; visibility: hidden; transform: translateY(30px); transition: opacity .35s, transform .45s var(--bounce), visibility .35s; }
+.js .scene { grid-area: 1 / 1; margin: 0; opacity: 0; visibility: hidden; transform: translateY(30px); transition: opacity .35s, transform .45s var(--bounce), visibility .35s; }
 .js .scene.is-active { opacity: 1; visibility: visible; transform: none; }
 .scene__time {
   margin: 0;
@@ -545,7 +555,6 @@ html[lang="ja"] .scene__title { font-family: var(--ff-jp-display); }
 .ride__card.is-active { transform: rotate(3deg); opacity: 1; z-index: 2; }
 @media (max-width: 879px) {
   .js .ride__cards { max-width: 170px; justify-self: end; margin-top: -10px; }
-  .js .ride__scenes { min-height: 300px; }
   .js .ride__sticky { padding-top: 80px; }
 }
 @media (max-width: 480px) {
@@ -571,7 +580,7 @@ html[lang="ja"] .scene__title { font-family: var(--ff-jp-display); }
   pointer-events: none;
   text-shadow: 6px 6px 0 var(--ink);
 }
-.mega--pink { color: var(--pink); }
+.mega--pink { color: #2A7353; text-shadow: none; } /* 読ませない地紋として背景に近いトーン */
 .rides .container { position: relative; z-index: 1; }
 
 .course-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 36px; padding-top: 30px; }
@@ -589,6 +598,10 @@ html[lang="ja"] .scene__title { font-family: var(--ff-jp-display); }
 .course:nth-child(3n+2) { transform: rotate(3deg) translateY(70px); }
 .course:nth-child(3n+3) { transform: rotate(-2deg) translateY(-10px); }
 .course:hover { transform: rotate(0) translateY(-6px) scale(1.04); z-index: 3; }
+@media (max-width: 700px) {
+  .course:nth-child(odd) { transform: rotate(-1.5deg); }
+  .course:nth-child(even) { transform: rotate(1.5deg); }
+}
 .course--pink { --cbg: var(--pink); }
 .course--shu { --cbg: var(--shu); color: var(--cream); }
 .course--cream { --cbg: var(--cream); }
@@ -805,8 +818,11 @@ html[lang="ja"] .plan h3 { font-family: var(--ff-jp-display); font-size: 24px; }
 .polaroid .ph { aspect-ratio: 1; border: 2px solid var(--ink); margin-bottom: 10px; }
 .polaroid blockquote { margin: 0 0 8px; font-family: var(--ff-display); font-size: 18px; line-height: 1.2; }
 .polaroid figcaption { font-size: 11px; font-weight: 800; letter-spacing: .1em; }
-@media (max-width: 760px) {
-  .wall__board { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 var(--gutter); }
+@media (max-width: 1023px) {
+  .wall__board { height: auto; display: grid; grid-template-columns: repeat(3, 1fr); align-items: start; gap: 20px; padding: 0 var(--gutter); }
+}
+@media (max-width: 640px) { .wall__board { grid-template-columns: 1fr 1fr; gap: 16px; } }
+@media (max-width: 1023px) {
   .polaroid { position: relative; left: auto; top: auto; width: auto; cursor: default; touch-action: auto; }
   .polaroid blockquote { font-size: 15px; }
 }
@@ -965,4 +981,12 @@ html[lang="ja"] .doc h2 { font-family: var(--ff-jp-display); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .petals { display: none; }
+}
+
+/* 固定ボタン：スマホでは小さく、ページ末尾が隠れないよう余白を足す */
+@media (max-width: 640px) {
+  .floaty { right: 12px; bottom: 12px; gap: 8px; }
+  .floaty__chat { width: 50px; height: 50px; }
+  .floaty__book { min-height: 50px; padding: 0 20px; font-size: 14px; }
+  .ftr { padding-bottom: 72px; }
 }
