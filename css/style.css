@@ -364,7 +364,7 @@ html[lang="ja"] .badge { font-family: var(--ff-jp-display); font-size: clamp(12p
 .hero__ride { display: none; }
 .hero__kart { display: block; width: 100%; height: auto; filter: drop-shadow(0 8px 0 rgba(28,16,34,.25)); animation: cruise 6s ease-in-out infinite; }
 .hero__sfx { position: absolute; right: 0; bottom: -44px; font-size: clamp(30px, 3vw, 40px); transform: rotate(-6deg); animation: sfxPulse 1.4s var(--bounce) infinite; }
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .hero__ride { display: block; position: absolute; left: calc(100% + 120px); top: 12%; width: 220px; pointer-events: none; }
 }
 /* ラベル：見出しの上に置く（浮かせない） */
